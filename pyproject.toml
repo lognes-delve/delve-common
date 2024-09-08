@@ -1,0 +1,14 @@
+[project]
+name = "delve_common"
+dynamic = ["version"]
+authors = [
+  {name = "Alex Lohnes", email = "alexanderjlohnes@gmail.com"},
+]
+dependencies = [
+  "starlette",
+]
+readme = "readme.md"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
