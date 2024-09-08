@@ -6,6 +6,9 @@ authors = [
 ]
 dependencies = [
   "starlette",
+  "fastapi",
+  "pydantic",
+  "motor"
 ]
 readme = "readme.md"
 
