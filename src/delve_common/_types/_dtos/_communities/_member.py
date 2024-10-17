@@ -15,8 +15,8 @@ class Member(BaseModel):
 
     # region metadata
     created_at : datetime = Field(
-        default_factory=datetime.now(tz=UTC))
+        default_factory=lambda: datetime.now(tz=UTC))
     
     edited_at : datetime = Field(
-        default_factory=datetime.now(tz=UTC))
+        default_factory=lambda: datetime.now(tz=UTC))
     # endregion
