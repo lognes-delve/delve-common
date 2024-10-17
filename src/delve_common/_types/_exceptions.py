@@ -1,13 +1,12 @@
 from starlette.exceptions import HTTPException
-from typing import Optional
-from ._utils import JSONSerializable
+from typing import Optional, Dict, Any
 from ._models import DelveAPIExceptionModel
 
 class DelveHTTPException(HTTPException):
     """An extension of `starlette.exceptions.HTTPException` that includes an additional field for filtering"""
 
     identifier : str = "delve_exception"
-    additional_metadata : JSONSerializable
+    additional_metadata : Dict[str, Any]
 
     def __init__(
             self,
@@ -15,7 +14,7 @@ class DelveHTTPException(HTTPException):
             detail: str | None = None, 
             identifier : Optional[str] = None,
             headers: dict[str, str] | None = None,
-            additional_metadata : JSONSerializable = None
+            additional_metadata : Dict[str, Any] = None
         ) -> None:
 
         super().__init__(status_code, detail, headers)
