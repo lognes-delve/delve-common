@@ -4,18 +4,13 @@ version = "0.0.1"
 authors = [
   {name = "Alex Lohnes", email = "alexanderjlohnes@gmail.com"},
 ]
-readme = "readme.md"
-
-[project.dependencies]
 dependencies = [
   "starlette",
   "fastapi",
   "pydantic",
   "motor"
 ]
-
-[tool.hatch]
-version = "0.0.1"
+readme = "readme.md"
 
 [build-system]
 requires = ["hatchling"]
