@@ -14,7 +14,7 @@ class Message(BaseModel):
     community_id : str
 
     content : MessageContent
-    mentions : Optional[List[str]] = Field(default=None)
+    mentions : Optional[List[str]] = Field(default=[])
 
     # region metadata
     created_at : datetime = Field(
