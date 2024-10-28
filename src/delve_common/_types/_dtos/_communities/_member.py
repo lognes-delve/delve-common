@@ -4,7 +4,8 @@ from typing import List, Union
 
 class Member(BaseModel):
 
-    id : str # 1:1 with user's id
+    id : str
+    user_id : str
     community_id : str
 
     role_ids : List[str] = Field(default=[])
