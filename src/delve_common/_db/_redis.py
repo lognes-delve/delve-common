@@ -1,11 +1,11 @@
-import aioredis
+from redis.asyncio import Redis
 from fastapi import FastAPI
 from os import getenv
 from typing import Union
 
 # region Singleton Accessors
 
-async def get_redis() -> aioredis.Redis:
+async def get_redis() -> Redis:
     """Retrieves the redis singleton"""
     return await DelveRedis.get_redis()
 
@@ -16,7 +16,7 @@ async def get_redis() -> aioredis.Redis:
 class DelveRedis(object):
 
     app : FastAPI
-    redis_client : Union[aioredis.Redis, None]
+    redis_client : Union[Redis, None]
 
     def _register_app_events(self) -> None:
         """Registers the event handlers for the starlette app so that the redis client exists only when it needs to"""
@@ -36,8 +36,9 @@ class DelveRedis(object):
     async def _init_redis(self) -> None:
         """A hook to initialize the redis client instance and set the class attr for the singleton"""
         
-        tmp = await aioredis.from_url(
-            f"redis://{getenv('REDIS_HOST')}:{getenv('REDIS_PORT')}",
+        tmp = await Redis(
+            host=getenv('REDIS_HOST'),
+            port=getenv('REDIS_PORT'),
             password=getenv("REDIS_PASS")
         )
 
@@ -53,7 +54,7 @@ class DelveRedis(object):
     async def _close_redis(self) -> None:
         """A hook to shut the redis client down when the app needs to shut down"""
         
-        redis_client : Union[aioredis.Redis, None] = getattr(self.__class__, "redis_client", None)
+        redis_client : Union[Redis, None] = getattr(self.__class__, "redis_client", None)
 
         # Redis has already been closed
         if redis_client is None:
@@ -70,7 +71,7 @@ class DelveRedis(object):
         singleton_obj._register_app_events()
 
     @classmethod
-    async def get_redis(cls) -> aioredis.Redis:
+    async def get_redis(cls) -> Redis:
         """Returns the redis client object"""
         return getattr(cls, "redis_client")
 

@@ -9,7 +9,7 @@ dependencies = [
   "fastapi",
   "pydantic",
   "motor",
-  "aioredis"
+  "redis"
 ]
 readme = "readme.md"
 
