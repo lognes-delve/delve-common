@@ -7,13 +7,13 @@ from typing import Union
 
 async def get_redis() -> aioredis.Redis:
     """Retrieves the redis singleton"""
-    return await Redis.get_redis()
+    return await DelveRedis.get_redis()
 
 # endregion
 
 # region Singleton Definition
 
-class Redis(object):
+class DelveRedis(object):
 
     app : FastAPI
     redis_client : Union[aioredis.Redis, None]
