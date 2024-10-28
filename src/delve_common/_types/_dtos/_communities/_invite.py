@@ -2,13 +2,11 @@ from pydantic import BaseModel, Field, computed_field
 from datetime import UTC, datetime, timedelta
 from typing import Union
 
-from .._user import User
-
 class Invite(BaseModel):
 
     community_id : str
     invite_code : str
-    author : User
+    author_id : str
 
     valid_duration : Union[timedelta, None] # if none, infinite duration
 

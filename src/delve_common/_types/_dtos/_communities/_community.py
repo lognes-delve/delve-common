@@ -1,8 +1,6 @@
 from datetime import UTC, datetime
 from pydantic import BaseModel, Field
 from typing import List
-from ._channel import Channel
-from ._role import Role
 
 class Community(BaseModel):
 
@@ -10,16 +8,8 @@ class Community(BaseModel):
     name : str
     owner_id : str
 
-    channels : List[Channel] = Field(default=[])
-    roles : List[Role] = Field(default=[])
-
-    # region metrics
-    
-    member_count : int = Field(default=1)
-    channel_count : int = Field(default=0)
-    role_count : int = Field(default=0)
-
-    # endregion
+    channel_ids : List[str] = Field(default=[])
+    role_ids : List[str] = Field(default=[])
 
     # region metadata
     created_at : datetime = Field(

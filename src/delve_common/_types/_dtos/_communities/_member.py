@@ -2,15 +2,12 @@ from datetime import UTC, datetime
 from pydantic import BaseModel, Field
 from typing import List, Union
 
-from .._user import User
-from ._role import Role
-
 class Member(BaseModel):
 
-    user : User
+    id : str # 1:1 with user's id
     community_id : str
 
-    roles : List[Role] = Field(default=[])
+    role_ids : List[str] = Field(default=[])
     nickname : Union[str, None] = Field(default=None)
 
     # region metadata
