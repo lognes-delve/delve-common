@@ -9,7 +9,7 @@ class Invite(BaseModel):
     invite_code : str
     author_id : str
 
-    valid_duration : Union[timedelta, None] # if none, infinite duration
+    valid_days : Union[int, None] # valid number of days
 
     # region metadata
     created_at : datetime = Field(
