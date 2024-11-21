@@ -1,4 +1,5 @@
 from datetime import UTC, datetime
+from typing import Dict
 from pydantic import BaseModel, Field
 
 class Channel(BaseModel):
@@ -6,6 +7,9 @@ class Channel(BaseModel):
     id : str
     community_id : str
     name : str
+
+    # {"role_id" : {"key" : true/false, ...}, ...}
+    permission_overrides : Dict[str, Dict[str, bool]] = Field(default={})
 
     # region metadata
     created_at : datetime = Field(

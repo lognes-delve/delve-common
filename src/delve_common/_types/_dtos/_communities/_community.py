@@ -11,6 +11,8 @@ class Community(BaseModel):
     channel_ids : List[str] = Field(default=[])
     role_ids : List[str] = Field(default=[])
 
+    flags : List[str] = Field(default=[])
+
     # region metadata
     created_at : datetime = Field(
         default_factory=lambda: datetime.now(tz=UTC))

@@ -1,6 +1,6 @@
 from datetime import UTC, datetime
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Dict, Optional
 
 class Role(BaseModel):
 
@@ -8,6 +8,8 @@ class Role(BaseModel):
     name : str
     colour : Optional[int] = Field(default=None)
     community_id : str
+
+    permisson_overrides : Dict[str, bool] = Field(default={})
 
     # region metadata
     created_at : datetime = Field(
