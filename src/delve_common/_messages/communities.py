@@ -123,10 +123,10 @@ class RoleCreatedEvent(RoleEvent):
     event: Literal["role_created"] = "role_created"
     role : Role
 
-class RoleDeleted(RoleEvent):
+class RoleDeletedEvent(RoleEvent):
     event : Literal["role_deleted"] = "role_deleted"
 
-class RoleModified(RoleEvent):
+class RoleModifiedEvent(RoleEvent):
     event: Literal["role_modified"] = "role_modified"
     before : Role
     after : Role
