@@ -1,4 +1,5 @@
 from typing import Literal, Optional
+
 from .base import BaseEvent, BaseError
 from pydantic import Field
 
@@ -6,6 +7,7 @@ from delve_common._types._dtos._message import Message
 from delve_common._types._dtos._communities._community import Community
 from delve_common._types._dtos._communities._member import Member
 from delve_common._types._dtos._communities._channel import Channel
+from delve_common._types._dtos._communities._role import Role
 
 # region Community Events
 
@@ -109,5 +111,24 @@ class CommunityMessagePingEvent(CommunityMessageEvent):
     When a message contains a ping
     """
     event : Literal["community_message_ping"] = "community_message_ping"
+
+# endregion
+
+# region Role Events
+
+class RoleEvent(CommunityEvent):
+    role_id : int
+
+class RoleCreatedEvent(RoleEvent):
+    event: Literal["role_created"] = "role_created"
+    role : Role
+
+class RoleDeleted(RoleEvent):
+    event : Literal["role_deleted"] = "role_deleted"
+
+class RoleModified(RoleEvent):
+    event: Literal["role_modified"] = "role_modified"
+    before : Role
+    after : Role
 
 # endregion

@@ -1,6 +1,7 @@
 from datetime import UTC, datetime
 from pydantic import BaseModel, Field
 from typing import List
+from ._role import Role
 
 class Community(BaseModel):
 
@@ -9,7 +10,7 @@ class Community(BaseModel):
     owner_id : str
 
     channel_ids : List[str] = Field(default=[])
-    role_ids : List[str] = Field(default=[])
+    roles : List[Role] = Field(default=[])
 
     flags : List[str] = Field(default=[])
 

@@ -4,10 +4,9 @@ from typing import Dict, Optional
 
 class Role(BaseModel):
 
-    id : str
+    id : int
     name : str
     colour : Optional[int] = Field(default=None)
-    community_id : str
 
     permisson_overrides : Dict[str, bool] = Field(default={})
 
