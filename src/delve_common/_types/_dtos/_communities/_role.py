@@ -8,7 +8,7 @@ class Role(BaseModel):
     name : str
     colour : Optional[int] = Field(default=None)
 
-    permisson_overrides : Dict[str, bool] = Field(default={})
+    permission_overrides : Dict[str, bool] = Field(default={})
 
     # region metadata
     created_at : datetime = Field(
