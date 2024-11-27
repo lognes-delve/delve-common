@@ -4,7 +4,7 @@ from typing import Dict, Optional
 
 class Role(BaseModel):
 
-    id : int
+    id : str
     name : str
     colour : Optional[int] = Field(default=None)
 

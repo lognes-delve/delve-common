@@ -13,7 +13,7 @@ class ChannelPermission(PermissionScope):
 class Permissions(BaseModel):
 
     # Guild level permissions
-    manage_guild : Annotated[Optional[bool], GuildPermission()] = None
+    manage_community : Annotated[Optional[bool], GuildPermission()] = None
 
     # TODO<moderation>: These currently are unused
     kick_members : Annotated[Optional[bool], GuildPermission()] = None
@@ -34,7 +34,7 @@ class Permissions(BaseModel):
     def default(cls) -> "Permissions":
         """Returns the default permissions object"""
         return cls(
-            manage_guild = False,
+            manage_community = False,
             kick_members = False,
             ban_members = False,
 
