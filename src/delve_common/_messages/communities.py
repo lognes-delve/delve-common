@@ -117,7 +117,7 @@ class CommunityMessagePingEvent(CommunityMessageEvent):
 # region Role Events
 
 class RoleEvent(CommunityEvent):
-    role_id : int
+    role_id : str
 
 class RoleCreatedEvent(RoleEvent):
     event: Literal["role_created"] = "role_created"
