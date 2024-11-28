@@ -1,4 +1,4 @@
-from typing import Literal, Optional
+from typing import List, Literal, Optional
 
 from .base import BaseEvent, BaseError
 from pydantic import Field
@@ -130,5 +130,9 @@ class RoleModifiedEvent(RoleEvent):
     event: Literal["role_modified"] = "role_modified"
     before : Role
     after : Role
+
+class RolePositionsModified(CommunityEvent):
+    event : Literal["role_positions_changed"] = "role_positions_changed"
+    new_order : List[Role]
 
 # endregion
