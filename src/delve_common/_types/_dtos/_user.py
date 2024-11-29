@@ -17,7 +17,7 @@ class User(BaseModel):
 
     flags : List[str] = Field(default=[])
     status : str = Field(default="online")
-    last_seen : datetime = Field(default_factory=lambda: datetime.now(tz=UTC))
+    last_seen : datetime = Field(default_factory=lambda: datetime(0, 0, 0, 0, 0, 0, 0, UTC))
 
     icon_key : Optional[str] = Field(default=None)
     icon_primary : Optional[int] = Field(default=None)
